@@ -17,23 +17,6 @@ namespace XamarinTimeTracker.ViewModel
     /// </summary>
     public class StartViewModel : ViewModelBase
     {
-		private List<Project> _projects;
-		public List<Project> Projects
-		{ 
-			get { return _projects; }
-			set { _projects = value; }
-		}
 
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
-        public StartViewModel()
-        {
-			Projects = new List<Project> { 
-				new Project("Technical project", "In this project we need to make a robot move"),
-				new Project("Web project", "Node.js as server, AngularJS for frontend, ECMA-Script ftw!"),
-				new Project("Mobile project", "Do some fancy stuff for iOS and Android")
-			};
-        }
     }
 }
