@@ -13,5 +13,11 @@
           <converters:DurationValueConverter0 x:Key="duration" />
         </ResourceDictionary>
     </ContentPage.Resources>
-  
+
+    <ContentPage.Content>
+      <StackLayout Padding="10">
+      </StackLayout>
+
+    </ContentPage.Content>
+
 </ContentPage>
