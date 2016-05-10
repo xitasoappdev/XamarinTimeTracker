@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GalaSoft.MvvmLight;
 using XamarinTimeTracker.Model;
 
@@ -72,5 +73,13 @@ namespace XamarinTimeTracker
             IsActive = true;
         }
 
+        public void Tick(DateTime now)
+        {
+            TotalTimeSpentSeconds =
+                (int)segments.Sum(segment =>
+                    (segment.EndTime ?? now)
+                    .Subtract(segment.StartTime)
+                    .TotalSeconds);
+        }
     }
 }
