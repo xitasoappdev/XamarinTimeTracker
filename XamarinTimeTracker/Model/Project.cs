@@ -44,7 +44,7 @@ namespace XamarinTimeTracker
             }
         }
 
-        public void StopTracking(DateTime stopTimeUtc)
+        public void StopTracking(DateTime stopTime)
         {
 
             if (activeSegment == null)
@@ -52,10 +52,25 @@ namespace XamarinTimeTracker
                 return;
             }
 
-            activeSegment.EndTime = stopTimeUtc;
+            activeSegment.EndTime = stopTime;
             activeSegment = null;
 
             IsActive = false;
         }
+
+        public void StartTracking(DateTime startTime)
+        {
+
+            if (activeSegment != null)
+            {
+                StopTracking(startTime);
+            }
+
+            activeSegment = new Segment(startTime);
+            segments.Add(activeSegment);
+
+            IsActive = true;
+        }
+
     }
 }
