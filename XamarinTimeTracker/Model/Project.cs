@@ -26,5 +26,17 @@ namespace XamarinTimeTracker
                 RaisePropertyChanged(() => IsActive);
             }
         }
+
+        private int totalTimeSpentSeconds = 0;
+
+        public int TotalTimeSpentSeconds
+        {
+            get { return totalTimeSpentSeconds; }
+            set
+            {
+                totalTimeSpentSeconds = value;
+                RaisePropertyChanged(() => TotalTimeSpentSeconds);
+            }
+        }
     }
 }
