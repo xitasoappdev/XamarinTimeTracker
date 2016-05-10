@@ -43,5 +43,19 @@ namespace XamarinTimeTracker
                 RaisePropertyChanged(() => TotalTimeSpentSeconds);
             }
         }
+
+        public void StopTracking(DateTime stopTimeUtc)
+        {
+
+            if (activeSegment == null)
+            {
+                return;
+            }
+
+            activeSegment.EndTime = stopTimeUtc;
+            activeSegment = null;
+
+            IsActive = false;
+        }
     }
 }
