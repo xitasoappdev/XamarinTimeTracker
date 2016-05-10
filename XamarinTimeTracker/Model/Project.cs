@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using GalaSoft.MvvmLight;
+using XamarinTimeTracker.Model;
 
 namespace XamarinTimeTracker
 {
@@ -8,6 +10,9 @@ namespace XamarinTimeTracker
         public string Name { get; }
 
         public string Description { get; set; }
+
+        private readonly IList<Segment> segments = new List<Segment>();
+        private Segment activeSegment;
 
         public Project(string name, string description)
         {
