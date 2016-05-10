@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XamarinTimeTracker.StartPage">
-	<StackLayout Orientation="Vertical">
-		<ListView x:Name="ProjectsListView" 
-				  ItemsSource="{Binding Projects}"
-				  RowHeight="100"
-				  SeparatorVisibility="None">
-			<ListView.ItemTemplate>
-	            <DataTemplate>
-	                <ViewCell>
-	                    <StackLayout Orientation="Horizontal">
-	                        <Label Text="{Binding Title}" 
-								   BackgroundColor="Red"
-								   HorizontalOptions="StartAndExpand" />
-							<ContentView BackgroundColor="Yellow"
-										 HorizontalOptions="EndAndExpand"
-										 VerticalOptions="FillAndExpand"
-										 Padding="30, 0, 30, 0">
-								<Label Text="►"
-									   HorizontalOptions="FillAndExpand"
-									   VerticalOptions="FillAndExpand"
-									   VerticalTextAlignment="Center"
-									   HorizontalTextAlignment="Center"
-									   FontSize="60" />
-							</ContentView>
-	                    </StackLayout>
-	                </ViewCell>
-	            </DataTemplate>
-	        </ListView.ItemTemplate>
-		</ListView>
-	</StackLayout>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:XamarinTimeTracker;assembly=XamarinTimeTracker"
+             x:Class="XamarinTimeTracker.StartPage">
+
 </ContentPage>

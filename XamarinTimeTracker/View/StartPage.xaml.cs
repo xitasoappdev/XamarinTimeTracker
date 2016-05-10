@@ -11,10 +11,6 @@ namespace XamarinTimeTracker
 		{
 			InitializeComponent();
 			BindingContext = App.Locator.Start;
-
-			ProjectsListView.ItemSelected += (sender, e) => {
-				ProjectsListView.SelectedItem = null;
-			};
 		}
 	}
 }
