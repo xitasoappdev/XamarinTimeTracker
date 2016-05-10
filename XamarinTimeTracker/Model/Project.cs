@@ -81,5 +81,13 @@ namespace XamarinTimeTracker
                     .Subtract(segment.StartTime)
                     .TotalSeconds);
         }
+
+
+        public void Reset()
+        {
+            IsActive = false;
+            segments.Clear();
+            TotalTimeSpentSeconds = 0;
+        }
     }
 }
