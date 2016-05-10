@@ -1,9 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace ProjectTracker
+namespace XamarinTimeTracker
 {
-    public class BoolToColorConverter : IValueConverter
+    public class BoolToColorConverter0 : IValueConverter
     {
 
         public Color TrueColor { set; get; }

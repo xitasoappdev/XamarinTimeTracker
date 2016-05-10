@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace ProjectTracker
+namespace XamarinTimeTracker
 {
     public class DurationValueConverter0 : IValueConverter
     {
