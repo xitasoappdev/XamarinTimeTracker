@@ -27,9 +27,9 @@ namespace XamarinTimeTracker.ViewModel
         private readonly ITimer timer;
         private Project currentProject;
 
-        public StartViewModel(ITimer projectTimer)
+        public StartViewModel()
         {
-            timer = projectTimer;
+            timer = App.Locator.ProjectTimer;
  
             Projects = new ObservableCollection<Project>();
 
