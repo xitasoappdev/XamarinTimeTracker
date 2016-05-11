@@ -37,6 +37,12 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <Button
+                StyleId="AddProject"
+                Command="{Binding AddNewProjectCommand}"
+                HorizontalOptions="FillAndExpand" />
+
         </StackLayout>
     </ContentPage.Content>
 
