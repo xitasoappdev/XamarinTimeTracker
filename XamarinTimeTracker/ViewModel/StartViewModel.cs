@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -31,6 +32,9 @@ namespace XamarinTimeTracker.ViewModel
             timer = projectTimer;
  
             Projects = new ObservableCollection<Project>();
+
+            timer.Start(TimeSpan.FromSeconds(1));
+            timer.Elapsed += (sender, tickUtc) => currentProject?.Tick(tickUtc);
         }
 
         private string newProjectName;
