@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:XamarinTimeTracker;assembly=XamarinTimeTracker"
              x:Class="XamarinTimeTracker.StartPage">
-   
+
     <ContentPage.Resources>
         <ResourceDictionary>
-          <converters:BoolToColorConverter0 
-          x:Key="activeProjectTextColor" 
-          TrueColor="Green" 
-          FalseColor="Black"/>
-          <converters:DurationValueConverter0 x:Key="duration" />
+            <converters:BoolToColorConverter0
+                x:Key="activeProjectTextColor"
+                TrueColor="Green"
+                FalseColor="Black" />
+            <converters:DurationValueConverter0 x:Key="duration" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
-      <StackLayout Padding="10">
-      </StackLayout>
-
+        <StackLayout Padding="10">
+            <Entry
+                x:Name="NewProjectName"
+                StyleId="NewProjectName"
+                Text="{Binding NewProjectName}"
+                HorizontalOptions="FillAndExpand"
+                Placeholder="New Project Name" />
+        </StackLayout>
     </ContentPage.Content>
 
 </ContentPage>
