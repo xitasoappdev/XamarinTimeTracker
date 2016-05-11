@@ -38,11 +38,7 @@ namespace XamarinTimeTracker
         public int TotalTimeSpentSeconds
         {
             get { return totalTimeSpentSeconds; }
-            set
-            {
-                totalTimeSpentSeconds = value;
-                RaisePropertyChanged(() => TotalTimeSpentSeconds);
-            }
+            set { Set(() => TotalTimeSpentSeconds, ref totalTimeSpentSeconds, value); }
         }
 
         public void StopTracking(DateTime stopTime)
