@@ -18,6 +18,11 @@ namespace XamarinTimeTracker
                 viewModel.ToggleProjectCommand.Execute(e.Item);
                 Projects.SelectedItem = null;
             };
+
+            NewProjectName.Completed += (sender, e) => {
+                NewProjectName.Unfocus();
+                viewModel.AddNewProjectCommand.Execute(null);
+            };
         }
     }
 }
