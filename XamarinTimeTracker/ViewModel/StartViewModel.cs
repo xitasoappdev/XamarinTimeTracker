@@ -17,6 +17,12 @@ namespace XamarinTimeTracker.ViewModel
     /// </summary>
     public class StartViewModel : ViewModelBase
     {
+        private string newProjectName;
 
+        public string NewProjectName
+        {
+            get { return newProjectName; }
+            set { Set(() => NewProjectName, ref newProjectName, value); }
+        }
     }
 }
