@@ -23,11 +23,17 @@
                 Text="{Binding NewProjectName}"
                 HorizontalOptions="FillAndExpand"
                 Placeholder="New Project Name" />
-                    
+
             <Button
                 Text="Add New Project"
                 StyleId="AddProject"
                 Command="{Binding AddNewProjectCommand}"
+                HorizontalOptions="FillAndExpand" />
+
+            <Button
+                Text="Reset All Projects"
+                StyleId="Reset"
+                Command="{Binding ResetAllProjectsCommand}"
                 HorizontalOptions="FillAndExpand" />
 
             <ListView
