@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using GalaSoft.MvvmLight;
 
 namespace XamarinTimeTracker.ViewModel
@@ -18,6 +19,11 @@ namespace XamarinTimeTracker.ViewModel
     /// </summary>
     public class StartViewModel : ViewModelBase
     {
+        public StartViewModel()
+        {
+            Projects = new ObservableCollection<Project>();
+        }
+
         private string newProjectName;
 
         public string NewProjectName
