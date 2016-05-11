@@ -5,17 +5,25 @@ using Xamarin.Forms;
 
 namespace XamarinTimeTracker
 {
-	public partial class StartPage : ContentPage
-	{
-		public StartPage()
-		{
-			InitializeComponent();
-			BindingContext = App.Locator.Start;
+    public partial class StartPage : ContentPage
+    {
+        public StartPage()
+        {
+            InitializeComponent();
+            var viewModel = App.Locator.Start;
+            BindingContext = viewModel;
 
-			ProjectsListView.ItemSelected += (sender, e) => {
-				ProjectsListView.SelectedItem = null;
-			};
-		}
-	}
+            Projects.ItemTapped += (sender, e) =>
+            {
+                viewModel.ToggleProjectCommand.Execute(e.Item);
+                Projects.SelectedItem = null;
+            };
+
+            NewProjectName.Completed += (sender, e) => {
+                NewProjectName.Unfocus();
+                viewModel.AddNewProjectCommand.Execute(null);
+            };
+        }
+    }
 }
 

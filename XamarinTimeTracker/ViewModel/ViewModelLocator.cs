@@ -15,6 +15,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using XamarinTimeTracker.Model;
 
 namespace XamarinTimeTracker.ViewModel
 {
@@ -43,16 +44,14 @@ namespace XamarinTimeTracker.ViewModel
             ////}
 
             SimpleIoc.Default.Register<StartViewModel>();
+            SimpleIoc.Default.Register<ITimer, ProjectTimer>();
         }
 
-        public StartViewModel Start
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<StartViewModel>();
-            }
-        }
-        
+        public StartViewModel Start => ServiceLocator.Current.GetInstance<StartViewModel>();
+
+        public ITimer ProjectTimer => ServiceLocator.Current.GetInstance<ITimer>();
+
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

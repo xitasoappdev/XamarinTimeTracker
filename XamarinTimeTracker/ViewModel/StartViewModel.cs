@@ -1,5 +1,11 @@
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using XamarinTimeTracker.Model;
 
 namespace XamarinTimeTracker.ViewModel
 {
@@ -17,23 +23,75 @@ namespace XamarinTimeTracker.ViewModel
     /// </summary>
     public class StartViewModel : ViewModelBase
     {
-		private List<Project> _projects;
-		public List<Project> Projects
-		{ 
-			get { return _projects; }
-			set { _projects = value; }
-		}
 
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
+        private readonly ITimer timer;
+        private Project currentProject;
+
         public StartViewModel()
         {
-			Projects = new List<Project> { 
-				new Project("Technical project", "In this project we need to make a robot move"),
-				new Project("Web project", "Node.js as server, AngularJS for frontend, ECMA-Script ftw!"),
-				new Project("Mobile project", "Do some fancy stuff for iOS and Android")
-			};
+            timer = App.Locator.ProjectTimer;
+ 
+            Projects = new ObservableCollection<Project>();
+
+            timer.Start(TimeSpan.FromSeconds(1));
+            timer.Elapsed += (sender, tickUtc) => currentProject?.Tick(tickUtc);
         }
+
+        private string newProjectName;
+
+        public string NewProjectName
+        {
+            get { return newProjectName; }
+            set { Set(() => NewProjectName, ref newProjectName, value); }
+        }
+
+
+        public RelayCommand AddNewProjectCommand => new RelayCommand(updateProjectList);
+
+        public RelayCommand<Project> ToggleProjectCommand => new RelayCommand<Project>(toggleProject);
+
+        public RelayCommand ResetAllProjectsCommand => new RelayCommand(resetAllProjects);
+
+        private void resetAllProjects()
+        {
+            foreach (var project in Projects)
+                project.Reset();
+        }
+
+        private void updateProjectList()
+        {
+            if (string.IsNullOrWhiteSpace(NewProjectName))
+                return;
+
+            Projects.Add(new Project(NewProjectName, null));
+            NewProjectName = "";
+        }
+    
+
+        public ObservableCollection<Project> Projects
+        {
+            get;
+        }
+
+        private void toggleProject(Project project)
+        {
+            if (currentProject == project)
+            {
+                currentProject.StopTracking(timer.Now);
+                currentProject = null;
+            }
+            else if (currentProject == null)
+            {
+                currentProject = project;
+                currentProject.StartTracking(timer.Now);
+            }
+            else {
+                currentProject.StopTracking(timer.Now);
+                currentProject = project;
+                currentProject.StartTracking(timer.Now);
+            }
+        }
+
+
     }
 }
