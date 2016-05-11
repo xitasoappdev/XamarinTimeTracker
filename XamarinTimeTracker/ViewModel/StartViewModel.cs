@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 
 namespace XamarinTimeTracker.ViewModel
 {
@@ -32,10 +34,22 @@ namespace XamarinTimeTracker.ViewModel
             set { Set(() => NewProjectName, ref newProjectName, value); }
         }
 
+
+        public RelayCommand AddNewProjectCommand => new RelayCommand(updateProjectList);
+
+        private void updateProjectList()
+        {
+            if (string.IsNullOrWhiteSpace(NewProjectName))
+                return;
+
+            Projects.Add(new Project(NewProjectName, null));
+            NewProjectName = "";
+        }
+    
+
         public ObservableCollection<Project> Projects
         {
             get;
-            private set;
         }
     }
 }
