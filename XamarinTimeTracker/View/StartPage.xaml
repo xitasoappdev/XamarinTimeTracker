@@ -23,6 +23,20 @@
                 Text="{Binding NewProjectName}"
                 HorizontalOptions="FillAndExpand"
                 Placeholder="New Project Name" />
+
+            <ListView
+                x:Name="Projects"
+                ItemsSource="{Binding Projects}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell
+                            Text="{Binding Name}"
+                            TextColor="{Binding IsActive, Converter={StaticResource activeProjectTextColor}}"
+                            Detail="{Binding TotalTimeSpentSeconds, Converter={StaticResource duration}}"
+                            DetailColor="{Binding IsActive, Converter={StaticResource activeProjectTextColor}}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 
