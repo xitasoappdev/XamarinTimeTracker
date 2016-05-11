@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
 
 namespace XamarinTimeTracker.ViewModel
@@ -23,6 +24,12 @@ namespace XamarinTimeTracker.ViewModel
         {
             get { return newProjectName; }
             set { Set(() => NewProjectName, ref newProjectName, value); }
+        }
+
+        public ObservableCollection<Project> Projects
+        {
+            get;
+            private set;
         }
     }
 }
