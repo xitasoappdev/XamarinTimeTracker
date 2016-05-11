@@ -48,12 +48,14 @@ namespace XamarinTimeTracker.ViewModel
 
         public RelayCommand AddNewProjectCommand => new RelayCommand(updateProjectList);
 
-        public RelayCommand<Project> ToggleProjectCommand
+        public RelayCommand<Project> ToggleProjectCommand => new RelayCommand<Project>(toggleProject);
+
+        public RelayCommand ResetAllProjectsCommand => new RelayCommand(resetAllProjects);
+
+        private void resetAllProjects()
         {
-            get
-            {
-                return new RelayCommand<Project>(toggleProject);
-            }
+            foreach (var project in Projects)
+                project.Reset();
         }
 
         private void updateProjectList()
@@ -89,5 +91,7 @@ namespace XamarinTimeTracker.ViewModel
                 currentProject.StartTracking(timer.Now);
             }
         }
+
+
     }
 }
