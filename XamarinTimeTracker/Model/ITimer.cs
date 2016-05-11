@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XamarinTimeTracker.Model
 {
-    interface ITimer
+    public interface ITimer
     {
         DateTime Now { get; }
 

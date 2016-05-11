@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using XamarinTimeTracker.Model;
 
 namespace XamarinTimeTracker.ViewModel
 {
@@ -21,8 +22,14 @@ namespace XamarinTimeTracker.ViewModel
     /// </summary>
     public class StartViewModel : ViewModelBase
     {
-        public StartViewModel()
+
+        private readonly ITimer timer;
+        private Project currentProject;
+
+        public StartViewModel(ITimer projectTimer)
         {
+            timer = projectTimer;
+ 
             Projects = new ObservableCollection<Project>();
         }
 
@@ -37,6 +44,14 @@ namespace XamarinTimeTracker.ViewModel
 
         public RelayCommand AddNewProjectCommand => new RelayCommand(updateProjectList);
 
+        public RelayCommand<Project> ToggleProjectCommand
+        {
+            get
+            {
+                return new RelayCommand<Project>(toggleProject);
+            }
+        }
+
         private void updateProjectList()
         {
             if (string.IsNullOrWhiteSpace(NewProjectName))
@@ -50,6 +65,25 @@ namespace XamarinTimeTracker.ViewModel
         public ObservableCollection<Project> Projects
         {
             get;
+        }
+
+        private void toggleProject(Project project)
+        {
+            if (currentProject == project)
+            {
+                currentProject.StopTracking(timer.Now);
+                currentProject = null;
+            }
+            else if (currentProject == null)
+            {
+                currentProject = project;
+                currentProject.StartTracking(timer.Now);
+            }
+            else {
+                currentProject.StopTracking(timer.Now);
+                currentProject = project;
+                currentProject.StartTracking(timer.Now);
+            }
         }
     }
 }
