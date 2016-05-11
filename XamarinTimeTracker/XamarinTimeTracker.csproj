@@ -32,6 +32,8 @@
   <ItemGroup>
     <Compile Include="Converters\BoolToColorConverter0.cs" />
     <Compile Include="Converters\DurationValueConverter0.cs" />
+    <Compile Include="Model\ProjectTimer.cs" />
+    <Compile Include="Model\ITimer.cs" />
     <Compile Include="Model\Segment.cs" />
     <Compile Include="XamarinTimeTracker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
