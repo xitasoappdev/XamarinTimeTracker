@@ -23,6 +23,12 @@
                 Text="{Binding NewProjectName}"
                 HorizontalOptions="FillAndExpand"
                 Placeholder="New Project Name" />
+                    
+            <Button
+                Text="Add New Project"
+                StyleId="AddProject"
+                Command="{Binding AddNewProjectCommand}"
+                HorizontalOptions="FillAndExpand" />
 
             <ListView
                 x:Name="Projects"
@@ -37,13 +43,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-            <Button
-                Text="Add New Project"
-                StyleId="AddProject"
-                Command="{Binding AddNewProjectCommand}"
-                HorizontalOptions="FillAndExpand" />
-
         </StackLayout>
     </ContentPage.Content>
 
