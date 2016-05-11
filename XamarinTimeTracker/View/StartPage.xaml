@@ -39,6 +39,7 @@
             </ListView>
 
             <Button
+                Text="Add New Project"
                 StyleId="AddProject"
                 Command="{Binding AddNewProjectCommand}"
                 HorizontalOptions="FillAndExpand" />
